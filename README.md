@@ -2,17 +2,9 @@
 
 This project supports [arxiv:<identifier>](https://arxiv.org/abs/<identifier>).
 
-The directory `functions` is taken from the [RTNI package](https://github.com/MotohisaFukuda/RTNI).
+The directory [`functions`](./functions) is taken from the [RTNI package](https://github.com/MotohisaFukuda/RTNI).
 
 Note that the bond dimension is denoted by $\xi$ instead of $D$.
-
-## Supporting Material for Results in One Dimension
-
-`<filename>.nb` shows <...>.
-
-## Supporting Material for Results in Two Dimensions
-
-`<filename>.nb` shows <...>.
 
 ## License
 
