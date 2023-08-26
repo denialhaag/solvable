@@ -9,6 +9,8 @@ GetPermutations::usage = "";
 
 Weingarten::usage = "";
 
+P::usage = "";
+
 
 Begin["`Private`"];
 
@@ -72,6 +74,13 @@ CountCycles[\[Alpha]_, k_] :=
 Weingarten[\[Alpha]_, k_, q_] :=
     GetFunctions[k][[Position[GetFunctions[k][[All, 1]], Type[\[Alpha], k]][[1,
          1]]]][[2]] /. utilities`Private`n -> q
+
+
+P[\[Alpha]_, k_, q_] :=
+    Sum[ket = Table[KroneckerDelta[FromDigits[Permute[PadLeft[IntegerDigits[
+        i, q], k], InversePermutation[\[Alpha]]], q], j], {j, 0, q^k - 1}]; bra = Table[
+        KroneckerDelta[i, j], {j, 0, q^k - 1}]; KroneckerProduct[ket, bra], {
+        i, 0, q^k - 1}]
 
 
 End[];

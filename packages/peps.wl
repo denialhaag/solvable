@@ -5,19 +5,10 @@ BeginPackage["mps`"];
 Needs["utilities`", FileNameJoin[{"packages", "utilities.wl"}]];
 
 
-P::usage = "";
-
 T::usage = "";
 
 
 Begin["`Private`"];
-
-
-P[\[Alpha]_, k_, q_] :=
-    Sum[ket = Table[KroneckerDelta[FromDigits[Permute[PadLeft[IntegerDigits[
-        i, q], k], InversePermutation[\[Alpha]]], q], j], {j, 0, q^k - 1}]; bra = Table[
-        KroneckerDelta[i, j], {j, 0, q^k - 1}]; KroneckerProduct[ket, bra], {
-        i, 0, q^k - 1}]
 
 
 T[type_:"c", k_, d_, \[Chi]_, matrix_:Nothing] :=
@@ -67,8 +58,8 @@ tc[k_, d_, \[Chi]_] :=
 tl[k_, d_, \[Chi]_, matrix_] :=
     FullSimplify[Table[Sum[utilities`Weingarten[\[Beta] \[PermutationProduct] InversePermutation[
         \[Alpha]], k, d * \[Chi]] * utilities`Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[\[Gamma]], k, d 
-        * \[Chi]] * Tr[Transpose[P[\[Alpha], k, d]] . Nest[KroneckerProduct[#, matrix]&, 
-        matrix, k - 1]] * d ^ utilities`CountCycles[\[Sigma], k] * d ^ utilities`CountCycles[
+        * \[Chi]] * Tr[Transpose[utilities`P[\[Alpha], k, d]] . Nest[KroneckerProduct[#, 
+        matrix]&, matrix, k - 1]] * d ^ utilities`CountCycles[\[Sigma], k] * d ^ utilities`CountCycles[
         \[Beta] \[PermutationProduct] InversePermutation[\[Gamma]], k] * \[Chi] ^ utilities`CountCycles[\[Alpha], k] * \[Chi] ^
          utilities`CountCycles[\[Sigma] \[PermutationProduct] InversePermutation[\[Delta]], k] * \[Chi] ^ (utilities`CountCycles[
         \[Beta] \[PermutationProduct] InversePermutation[\[Zeta]], k] / 2) * \[Chi] ^ (utilities`CountCycles[\[Epsilon] \[PermutationProduct] InversePermutation[
@@ -124,10 +115,10 @@ tbr[k_, d_, \[Chi]_] :=
 tr[k_, d_, \[Chi]_, matrix_] :=
     FullSimplify[Table[Sum[utilities`Weingarten[\[Beta] \[PermutationProduct] InversePermutation[
         \[Alpha]], k, d * \[Chi]] * utilities`Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[\[Gamma]], k, d 
-        * \[Chi]] * Tr[P[\[Sigma], k, d] . Nest[KroneckerProduct[#, matrix]&, matrix, k -
-         1]] * d ^ utilities`CountCycles[\[Alpha], k] * d ^ utilities`CountCycles[\[Beta] 
-        \[PermutationProduct] InversePermutation[\[Gamma]], k] * \[Chi] ^ utilities`CountCycles[\[Sigma], k] * \[Chi] ^ (
-        utilities`CountCycles[\[Beta] \[PermutationProduct] InversePermutation[\[Zeta]], k] / 2) * \[Chi] ^ (utilities`CountCycles[
+        * \[Chi]] * Tr[utilities`P[\[Sigma], k, d] . Nest[KroneckerProduct[#, matrix]&, matrix,
+         k - 1]] * d ^ utilities`CountCycles[\[Alpha], k] * d ^ utilities`CountCycles[
+        \[Beta] \[PermutationProduct] InversePermutation[\[Gamma]], k] * \[Chi] ^ utilities`CountCycles[\[Sigma], k] * \[Chi] ^
+         (utilities`CountCycles[\[Beta] \[PermutationProduct] InversePermutation[\[Zeta]], k] / 2) * \[Chi] ^ (utilities`CountCycles[
         \[Epsilon] \[PermutationProduct] InversePermutation[\[Gamma]], k] / 2), {\[Sigma], utilities`GetPermutations[k]}
         ], {\[Alpha], utilities`GetPermutations[k]}, {\[Beta], utilities`GetPermutations[k
         ]}, {\[Gamma], utilities`GetPermutations[k]}, {\[Epsilon], utilities`GetPermutations[
