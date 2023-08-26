@@ -34,25 +34,28 @@ T[type_:"c", k_, d_, \[Chi]_, matrix_:Nothing] :=
 
 
 tc[k_, d_, \[Chi]_] :=
-    FullSimplify[Table[Sum[Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[\[Tau]], k, d
-         * \[Chi]] * d ^ CountCycles[\[Tau], k] * d ^ CountCycles[\[Sigma], k] * \[Chi] ^ CountCycles[
-        \[Sigma] \[PermutationProduct] InversePermutation[\[Theta]], k], {\[Sigma], GetPerms[k]}], {\[Tau], GetPerms[k]}, {
-        \[Theta], GetPerms[k]}]]
+    FullSimplify[Table[Sum[utilities`Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[
+        \[Tau]], k, d * \[Chi]] * d ^ utilities`CountCycles[\[Tau], k] * d ^ utilities`CountCycles[
+        \[Sigma], k] * \[Chi] ^ utilities`CountCycles[\[Sigma] \[PermutationProduct] InversePermutation[\[Theta]], k], {\[Sigma], 
+        utilities`GetPermutations[k]}], {\[Tau], utilities`GetPermutations[k]}, {\[Theta],
+         utilities`GetPermutations[k]}]]
 
 
 tl[k_, d_, \[Chi]_, matrix_] :=
-    FullSimplify[Table[Sum[Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[\[Tau]], k, d
-         * \[Chi]] * Tr[Transpose[P[\[Tau], k, d]] . Nest[KroneckerProduct[#, matrix]&,
-         matrix, k - 1]] * d ^ CountCycles[\[Sigma], k] * \[Chi] ^ CountCycles[InversePermutation[
-        \[Tau]], k] * \[Chi] ^ CountCycles[\[Sigma] \[PermutationProduct] InversePermutation[\[Theta]], k], {\[Sigma], GetPerms[
-        k]}, {\[Tau], GetPerms[k]}], {\[Theta], GetPerms[k]}]]
+    FullSimplify[Table[Sum[utilities`Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[
+        \[Tau]], k, d * \[Chi]] * Tr[Transpose[P[\[Tau], k, d]] . Nest[KroneckerProduct[#, matrix
+        ]&, matrix, k - 1]] * d ^ utilities`CountCycles[\[Sigma], k] * \[Chi] ^ utilities`CountCycles[
+        InversePermutation[\[Tau]], k] * \[Chi] ^ CountCycles[\[Sigma] \[PermutationProduct] InversePermutation[\[Theta]],
+         k], {\[Sigma], utilities`GetPermutations[k]}, {\[Tau], utilities`GetPermutations[
+        k]}], {\[Theta], utilities`GetPermutations[k]}]]
 
 
 tr[k_, d_, \[Chi]_, matrix_] :=
-    FullSimplify[Table[Sum[Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[\[Tau]], k, d
-         * \[Chi]] * Tr[P[\[Sigma], k, d] . Nest[KroneckerProduct[#, matrix]&, matrix, k 
-        - 1]] * d ^ CountCycles[\[Tau], k] * \[Chi] ^ CountCycles[\[Sigma], k], {\[Sigma], GetPerms[k
-        ]}], {\[Tau], GetPerms[k]}]]
+    FullSimplify[Table[Sum[utilities`Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[
+        \[Tau]], k, d * \[Chi]] * Tr[P[\[Sigma], k, d] . Nest[KroneckerProduct[#, matrix]&, matrix,
+         k - 1]] * d ^ utilities`CountCycles[\[Tau], k] * \[Chi] ^ utilities`CountCycles[
+        \[Sigma], k], {\[Sigma], utilities`GetPermutations[k]}], {\[Tau], utilities`GetPermutations[
+        k]}]]
 
 
 End[];
