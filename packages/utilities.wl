@@ -22,7 +22,7 @@ Begin["`Private`"];
 
 
 ImportFunctions[k_] :=
-    (file = FileNameJoin[{NotebookDirectory[], "functions", StringJoin[
+    (file = FileNameJoin[{Directory[], "functions", StringJoin[
         "functions", ToString[k], ".txt"]}]; ToExpression[StringReplace[ReadString[
         file], {"**" -> "^", "]" -> "}", "[" -> "{", "n" -> "utilities`Private`n"
         }]])
