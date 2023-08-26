@@ -26,19 +26,19 @@ T[type_:"c", k_, d_, \[Chi]_, matrix_:Nothing] :=
             tb[k, d, \[Chi]]
         ,
         type == "br",
-            tl[k, d, \[Chi]]
+            tbr[k, d, \[Chi]]
         ,
         type == "r",
             tr[k, d, \[Chi], matrix]
         ,
         type == "tr",
-            tl[k, d, \[Chi]]
+            ttr[k, d, \[Chi]]
         ,
         type == "t",
-            tl[k, d, \[Chi]]
+            tt[k, d, \[Chi]]
         ,
         type == "tl",
-            tl[k, d, \[Chi]]
+            ttl[k, d, \[Chi]]
     ]
 
 
