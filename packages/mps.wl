@@ -36,9 +36,9 @@ tl[k_, d_, \[Chi]_, matrix_] :=
     FullSimplify[Table[Sum[utilities`Weingarten[\[Sigma] \[PermutationProduct] InversePermutation[
         \[Tau]], k, d * \[Chi]] * Tr[Transpose[utilities`P[\[Tau], k, d]] . Nest[KroneckerProduct[
         #, matrix]&, matrix, k - 1]] * d ^ utilities`CountCycles[\[Sigma], k] * \[Chi] ^ 
-        utilities`CountCycles[InversePermutation[\[Tau]], k] * \[Chi] ^ CountCycles[\[Sigma] \[PermutationProduct]
-         InversePermutation[\[Theta]], k], {\[Sigma], utilities`GetPermutations[k]}, {\[Tau], utilities`GetPermutations[
-        k]}], {\[Theta], utilities`GetPermutations[k]}]]
+        utilities`CountCycles[InversePermutation[\[Tau]], k] * \[Chi] ^ utilities`CountCycles[
+        \[Sigma] \[PermutationProduct] InversePermutation[\[Theta]], k], {\[Sigma], utilities`GetPermutations[k]}, {\[Tau],
+         utilities`GetPermutations[k]}], {\[Theta], utilities`GetPermutations[k]}]]
 
 
 tr[k_, d_, \[Chi]_, matrix_] :=
