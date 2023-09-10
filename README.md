@@ -1,6 +1,6 @@
 # solvable
 
-This project supports [arXiv:2309.XXXXX [quant-ph]](https://arxiv.org/abs/2309.XXXXX).
+This project supports [arXiv:2309.XXXXX](https://arxiv.org/abs/2309.XXXXX).
 
 The directory [`functions`](./functions) is taken from the [RTNI package](https://github.com/MotohisaFukuda/RTNI).
 
